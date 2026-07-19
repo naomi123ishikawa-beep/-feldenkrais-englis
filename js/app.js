@@ -44,13 +44,8 @@ function setupSettingsModal() {
   document.getElementById("apiKeyClear").addEventListener("click", () => {
     localStorage.removeItem(API_KEY_STORAGE_KEY);
     input.value = "";
-    status.textContent = "削除しました。";
+    status.textContent = "削除しました。自動評価はオフになります。";
   });
-
-  if (!getApiKey()) {
-    // 初回、キー未設定なら案内を出す
-    setTimeout(open, 400);
-  }
 }
 
 // ---------- 音声合成 (TTS) ----------
@@ -196,7 +191,7 @@ function setupDialogueMode() {
       const finalText = transcriptEl.textContent.trim();
       if (finalText) {
         micStatus.textContent = "";
-        evaluateAnswer(index, finalText);
+        handleAnswer(index, finalText);
       } else {
         micStatus.textContent = "うまく聞き取れませんでした。もう一度お試しください。";
       }
@@ -226,16 +221,18 @@ function setupDialogueMode() {
     });
   }
 
-  async function evaluateAnswer(itemIndex, transcript) {
+  const feedbackLabel = document.getElementById("d-feedback-label");
+
+  async function handleAnswer(itemIndex, transcript) {
     const apiKey = getApiKey();
+    const item = DIALOGUE_ITEMS[itemIndex];
+
     if (!apiKey) {
-      feedbackBlock.classList.remove("hidden");
-      feedbackContent.innerHTML =
-        '<p>Claude APIキーが設定されていません。右上の ⚙ から設定してください。</p>';
+      showComparison(item, transcript);
       return;
     }
 
-    const item = DIALOGUE_ITEMS[itemIndex];
+    feedbackLabel.textContent = "Claude からのフィードバック";
     feedbackBlock.classList.remove("hidden");
     feedbackLoading.classList.remove("hidden");
     feedbackContent.innerHTML = "";
@@ -253,6 +250,23 @@ function setupDialogueMode() {
     } finally {
       feedbackLoading.classList.add("hidden");
     }
+  }
+
+  // APIキー未設定時: 自分の発話と模範解答を並べて見比べるだけの表示（API呼び出しなし・無料）
+  function showComparison(item, transcript) {
+    feedbackLabel.textContent = "自分の発話と模範解答を見比べてみましょう";
+    feedbackBlock.classList.remove("hidden");
+    feedbackContent.innerHTML = `
+      <div class="feedback-item">
+        <div class="fi-title">あなたの発話</div>
+        <div>${escapeHtml(transcript)}</div>
+      </div>
+      <div class="feedback-item">
+        <div class="fi-title">模範解答（一例）</div>
+        <div>${escapeHtml(item.modelAnswerEn)}</div>
+      </div>
+      <p class="modal-note">⚙ でAPIキーを設定すると、Claudeによる自動評価（意図の一致・不自然な点・自然な提案）が使えるようになります。</p>
+    `;
   }
 
   function renderFeedback(result) {

@@ -63,7 +63,7 @@
     </div>
 
     <div id="d-feedback" class="card feedback-block hidden">
-      <p class="label">Claude からのフィードバック</p>
+      <p class="label" id="d-feedback-label">結果</p>
       <div id="d-feedback-loading" class="hidden">評価中です…</div>
       <div id="d-feedback-content"></div>
     </div>
@@ -98,10 +98,11 @@
 <!-- APIキー設定モーダル -->
 <div id="settingsModal" class="modal hidden">
   <div class="modal-content">
-    <h2>Claude API キー設定</h2>
+    <h2>Claude API キー設定（任意）</h2>
     <p class="modal-note">
-      キーはこの端末のブラウザ内（localStorage）にのみ保存され、Anthropic の API に直接送信されます。
-      コードには保存されません。
+      「②感覚を伝える」で、Claude による自動評価（意図に合っているか・不自然な点・自然な提案）を使いたい場合のみ設定してください。
+      未設定のままでも、音声認識した発話と模範解答を並べて自分で見比べることができます。
+      キーはこの端末のブラウザ内（localStorage）にのみ保存され、Anthropic の API に直接送信されます。コードには保存されません。
     </p>
     <input type="password" id="apiKeyInput" placeholder="sk-ant-...">
     <div class="modal-controls">
