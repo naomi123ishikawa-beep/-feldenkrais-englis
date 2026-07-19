@@ -1,0 +1,253 @@
+:root {
+  --bg: #faf8f5;
+  --card-bg: #ffffff;
+  --text: #2b2b2b;
+  --muted: #7a7a7a;
+  --accent: #5a8f7b;
+  --accent-dark: #457263;
+  --border: #e4ddd3;
+  --danger: #c66;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--card-bg);
+}
+
+.app-header h1 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.icon-btn {
+  border: none;
+  background: transparent;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.mode-nav {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px 0;
+  flex-wrap: wrap;
+}
+
+.mode-tab {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px 8px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.mode-tab.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+}
+
+.mode-panel {
+  display: none;
+}
+
+.mode-panel.active {
+  display: block;
+}
+
+.progress {
+  text-align: right;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0 0 8px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+
+.label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0 0 6px;
+  letter-spacing: 0.02em;
+}
+
+.jp-text {
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.en-text {
+  font-size: 1.15rem;
+  margin: 0 0 10px;
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+.answer-block {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(0.97);
+}
+
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.btn.secondary {
+  background: #eef3f0;
+  border-color: var(--border);
+}
+
+.mic-card {
+  text-align: center;
+}
+
+.mic-btn {
+  font-size: 1.1rem;
+  padding: 14px 28px;
+  border-radius: 30px;
+  background: var(--accent);
+  color: white;
+  border: none;
+}
+
+.mic-btn.recording {
+  background: var(--danger);
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(204,102,102,0.5); }
+  70% { box-shadow: 0 0 0 14px rgba(204,102,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(204,102,102,0); }
+}
+
+.mic-status {
+  color: var(--muted);
+  font-size: 0.85rem;
+  min-height: 1.2em;
+}
+
+.transcript {
+  min-height: 1.4em;
+}
+
+.feedback-block {
+  background: #f3f7f5;
+}
+
+.feedback-item {
+  margin-bottom: 10px;
+}
+
+.feedback-item .fi-title {
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin-bottom: 2px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 420px;
+  width: 100%;
+}
+
+.modal-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 14px;
+  font-size: 0.95rem;
+}
+
+.modal-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.modal-status {
+  font-size: 0.85rem;
+  color: var(--accent-dark);
+  min-height: 1.2em;
+}
+
+@media (max-width: 480px) {
+  .mode-tab { font-size: 0.8rem; }
+}
