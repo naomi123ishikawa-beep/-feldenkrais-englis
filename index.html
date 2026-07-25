@@ -17,6 +17,7 @@
   <button class="mode-tab active" data-mode="question">① 講師に質問する</button>
   <button class="mode-tab" data-mode="dialogue">② 感覚を伝える</button>
   <button class="mode-tab" data-mode="vocab">③ 語彙</button>
+  <button class="mode-tab" data-mode="daily">④ 日常会話</button>
 </nav>
 
 <main>
@@ -71,6 +72,40 @@
     <div class="controls">
       <button id="d-retry" class="btn">もう一度話す</button>
       <button id="d-next" class="btn primary">次へ →</button>
+    </div>
+  </section>
+
+  <!-- モード4: 日常会話（挨拶など） -->
+  <section id="mode-daily" class="mode-panel">
+    <p class="progress"><span id="n-progress"></span></p>
+
+    <div class="card">
+      <p class="label">講師からの声かけ</p>
+      <p id="n-question-en" class="en-text"></p>
+      <button id="n-speak-question" class="btn secondary">🔊 もう一度聞く</button>
+    </div>
+
+    <div class="card">
+      <p class="label">答えの意図（日本語）</p>
+      <p id="n-intent-jp" class="jp-text"></p>
+    </div>
+
+    <div class="card mic-card">
+      <button id="n-mic" class="btn mic-btn">🎤 話す</button>
+      <p id="n-mic-status" class="mic-status"></p>
+      <p class="label">認識されたあなたの発話</p>
+      <p id="n-transcript" class="en-text transcript"></p>
+    </div>
+
+    <div id="n-feedback" class="card feedback-block hidden">
+      <p class="label" id="n-feedback-label">結果</p>
+      <div id="n-feedback-loading" class="hidden">評価中です…</div>
+      <div id="n-feedback-content"></div>
+    </div>
+
+    <div class="controls">
+      <button id="n-retry" class="btn">もう一度話す</button>
+      <button id="n-next" class="btn primary">次へ →</button>
     </div>
   </section>
 

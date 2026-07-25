@@ -94,6 +94,61 @@ const DIALOGUE_ITEMS = [
   },
 ];
 
+// ---- モード4: 日常会話（挨拶など） ----
+// questionEn: 講師の英語での声かけ / intentJp: 答えの意図（日本語） / modelAnswerEn: 自然な英語の模範解答
+const DAILY_ITEMS = [
+  {
+    questionEn: "Hi! How are you doing today?",
+    intentJp: "元気です、ありがとう、と伝えたい。",
+    modelAnswerEn: "I'm doing well, thank you. How about you?",
+  },
+  {
+    questionEn: "Did you find the studio okay?",
+    intentJp: "はい、迷わずに来られました、と伝えたい。",
+    modelAnswerEn: "Yes, I found it without any trouble.",
+  },
+  {
+    questionEn: "Sorry I'm running a few minutes late.",
+    intentJp: "大丈夫です、気にしないでください、と伝えたい。",
+    modelAnswerEn: "No problem at all, don't worry about it.",
+  },
+  {
+    questionEn: "Would you like some water before we start?",
+    intentJp: "はい、お願いします、と伝えたい。",
+    modelAnswerEn: "Yes, please, that would be great.",
+  },
+  {
+    questionEn: "How was your week?",
+    intentJp: "忙しかったけれど良い一週間でした、と伝えたい。",
+    modelAnswerEn: "It was busy, but a good week overall.",
+  },
+  {
+    questionEn: "Does the same time next week work for you?",
+    intentJp: "はい、大丈夫です、と伝えたい。",
+    modelAnswerEn: "Yes, that works for me.",
+  },
+  {
+    questionEn: "Thanks for coming in today.",
+    intentJp: "こちらこそ、ありがとうございました、と伝えたい。",
+    modelAnswerEn: "Thank you, I really enjoyed it.",
+  },
+  {
+    questionEn: "Do you have any questions before we finish?",
+    intentJp: "いいえ、特にありません、と伝えたい。",
+    modelAnswerEn: "No, I don't have any questions right now.",
+  },
+  {
+    questionEn: "Is the room temperature okay for you?",
+    intentJp: "はい、ちょうどいいです、と伝えたい。",
+    modelAnswerEn: "Yes, it's just right, thank you.",
+  },
+  {
+    questionEn: "Take care, see you next time.",
+    intentJp: "はい、また次回よろしくお願いします、と伝えたい。",
+    modelAnswerEn: "You too, see you next time.",
+  },
+];
+
 // ---- モード3: 語彙 ----
 const VOCAB_ITEMS = [
   { jp: "骨盤", en: "pelvis" },

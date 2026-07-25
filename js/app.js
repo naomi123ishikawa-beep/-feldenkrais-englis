@@ -120,27 +120,27 @@ function setupVocabMode() {
   render();
 }
 
-// ---------- モード2: 感覚を伝える（対話形式） ----------
+// ---------- モード2・4: 対話形式（感覚を伝える／日常会話） ----------
 
-function setupDialogueMode() {
+function setupConversationMode(items, prefix) {
   let index = 0;
   let recognition = null;
   let recognizing = false;
 
-  const micBtn = document.getElementById("d-mic");
-  const micStatus = document.getElementById("d-mic-status");
-  const transcriptEl = document.getElementById("d-transcript");
-  const feedbackBlock = document.getElementById("d-feedback");
-  const feedbackLoading = document.getElementById("d-feedback-loading");
-  const feedbackContent = document.getElementById("d-feedback-content");
+  const micBtn = document.getElementById(`${prefix}-mic`);
+  const micStatus = document.getElementById(`${prefix}-mic-status`);
+  const transcriptEl = document.getElementById(`${prefix}-transcript`);
+  const feedbackBlock = document.getElementById(`${prefix}-feedback`);
+  const feedbackLoading = document.getElementById(`${prefix}-feedback-loading`);
+  const feedbackContent = document.getElementById(`${prefix}-feedback-content`);
 
   const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
 
   function render() {
-    const item = DIALOGUE_ITEMS[index];
-    document.getElementById("d-progress").textContent = `${index + 1} / ${DIALOGUE_ITEMS.length}`;
-    document.getElementById("d-question-en").textContent = item.questionEn;
-    document.getElementById("d-intent-jp").textContent = item.intentJp;
+    const item = items[index];
+    document.getElementById(`${prefix}-progress`).textContent = `${index + 1} / ${items.length}`;
+    document.getElementById(`${prefix}-question-en`).textContent = item.questionEn;
+    document.getElementById(`${prefix}-intent-jp`).textContent = item.intentJp;
     transcriptEl.textContent = "";
     micStatus.textContent = "";
     feedbackBlock.classList.add("hidden");
@@ -148,16 +148,16 @@ function setupDialogueMode() {
     speak(item.questionEn);
   }
 
-  document.getElementById("d-speak-question").addEventListener("click", () => {
-    speak(DIALOGUE_ITEMS[index].questionEn);
+  document.getElementById(`${prefix}-speak-question`).addEventListener("click", () => {
+    speak(items[index].questionEn);
   });
 
-  document.getElementById("d-next").addEventListener("click", () => {
-    index = (index + 1) % DIALOGUE_ITEMS.length;
+  document.getElementById(`${prefix}-next`).addEventListener("click", () => {
+    index = (index + 1) % items.length;
     render();
   });
 
-  document.getElementById("d-retry").addEventListener("click", () => {
+  document.getElementById(`${prefix}-retry`).addEventListener("click", () => {
     transcriptEl.textContent = "";
     micStatus.textContent = "";
     feedbackBlock.classList.add("hidden");
@@ -221,11 +221,11 @@ function setupDialogueMode() {
     });
   }
 
-  const feedbackLabel = document.getElementById("d-feedback-label");
+  const feedbackLabel = document.getElementById(`${prefix}-feedback-label`);
 
   async function handleAnswer(itemIndex, transcript) {
     const apiKey = getApiKey();
-    const item = DIALOGUE_ITEMS[itemIndex];
+    const item = items[itemIndex];
 
     if (!apiKey) {
       showComparison(item, transcript);
@@ -368,6 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupSettingsModal();
   setupModeNav();
   setupQuestionMode();
-  setupDialogueMode();
+  setupConversationMode(DIALOGUE_ITEMS, "d");
+  setupConversationMode(DAILY_ITEMS, "n");
   setupVocabMode();
 });
