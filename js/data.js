@@ -37,6 +37,54 @@ const QUESTION_ITEMS = [
     jp: "目を閉じてやった方がいいか聞きたい。",
     en: "Is it better to do this with my eyes closed?",
   },
+  {
+    jp: "息を吐きながら動くのか、吸いながら動くのか確認したい。",
+    en: "Should I move while breathing out, or while breathing in?",
+  },
+  {
+    jp: "頭は動かさずに、目だけ動かせばいいのか聞きたい。",
+    en: "Should I keep my head still and only move my eyes?",
+  },
+  {
+    jp: "このクッションは腰の下に置くのか、膝の下に置くのか確認したい。",
+    en: "Does this cushion go under my lower back, or under my knees?",
+  },
+  {
+    jp: "動きは大きくするべきか、小さくするべきか聞きたい。",
+    en: "Should the movement be big, or small?",
+  },
+  {
+    jp: "足の裏全体を床につけるのか、かかとだけでいいのか聞きたい。",
+    en: "Should my whole foot be on the floor, or just my heel?",
+  },
+  {
+    jp: "このレッスンは何分くらい続くのか聞きたい。",
+    en: "About how long does this lesson last?",
+  },
+  {
+    jp: "途中で休んでもいいか確認したい。",
+    en: "Is it okay if I rest partway through?",
+  },
+  {
+    jp: "手のひらは上向きにするのか、下向きにするのか聞きたい。",
+    en: "Should my palms face up, or down?",
+  },
+  {
+    jp: "この動きを始める前に、何か準備することはあるか聞きたい。",
+    en: "Is there anything I should prepare before starting this movement?",
+  },
+  {
+    jp: "首を回す方向は時計回りか反時計回りか確認したい。",
+    en: "Should I turn my neck clockwise, or counterclockwise?",
+  },
+  {
+    jp: "マットの上でやるのか、椅子の上でやるのか確認したい。",
+    en: "Should I do this on the mat, or in a chair?",
+  },
+  {
+    jp: "動きのスピードはどのくらいがいいか聞きたい。",
+    en: "How fast should I do this movement?",
+  },
 ];
 
 // ---- モード2: 感覚を伝える（対話形式） ----
@@ -91,6 +139,56 @@ const DIALOGUE_ITEMS = [
     questionEn: "Is your lower back touching the floor, or is there a gap?",
     intentJp: "少し隙間があると伝えたい。",
     modelAnswerEn: "There's a small gap under my lower back.",
+  },
+  {
+    questionEn: "Does your breathing feel freer now than before?",
+    intentJp: "さっきよりも呼吸が自由になった気がすると伝えたい。",
+    modelAnswerEn: "Yes, my breathing feels freer now than before.",
+  },
+  {
+    questionEn: "Which shoulder feels lower right now?",
+    intentJp: "今は右肩の方が低く感じると伝えたい。",
+    modelAnswerEn: "My right shoulder feels lower right now.",
+  },
+  {
+    questionEn: "Do you feel any tension left in your jaw?",
+    intentJp: "顎にはまだ少し緊張が残っていると伝えたい。",
+    modelAnswerEn: "Yes, I still feel a little tension in my jaw.",
+  },
+  {
+    questionEn: "Is your weight more on your heels, or your toes?",
+    intentJp: "体重はかかとの方にかかっていると伝えたい。",
+    modelAnswerEn: "My weight feels more on my heels.",
+  },
+  {
+    questionEn: "Does turning to the right feel smoother than before?",
+    intentJp: "はい、右に向く動きがさっきより滑らかになったと伝えたい。",
+    modelAnswerEn: "Yes, turning to the right feels smoother now.",
+  },
+  {
+    questionEn: "How does your pelvis feel compared to the beginning?",
+    intentJp: "骨盤が最初よりも安定している気がすると伝えたい。",
+    modelAnswerEn: "My pelvis feels more stable than at the beginning.",
+  },
+  {
+    questionEn: "Do you notice your feet touching the floor differently on each side?",
+    intentJp: "はい、左足の方がしっかり床に触れている気がすると伝えたい。",
+    modelAnswerEn: "Yes, my left foot feels more in contact with the floor.",
+  },
+  {
+    questionEn: "Is your neck longer on one side?",
+    intentJp: "右側の方が首が長く伸びている感じがすると伝えたい。",
+    modelAnswerEn: "My neck feels longer on the right side.",
+  },
+  {
+    questionEn: "Do you feel more space between your ribs and your pelvis?",
+    intentJp: "はい、肋骨と骨盤の間に空間ができた気がすると伝えたい。",
+    modelAnswerEn: "Yes, I feel more space between my ribs and my pelvis.",
+  },
+  {
+    questionEn: "Which arm feels lighter to lift?",
+    intentJp: "左腕の方が軽く感じると伝えたい。",
+    modelAnswerEn: "My left arm feels lighter to lift.",
   },
 ];
 
@@ -147,6 +245,56 @@ const DAILY_ITEMS = [
     intentJp: "はい、また次回よろしくお願いします、と伝えたい。",
     modelAnswerEn: "You too, see you next time.",
   },
+  {
+    questionEn: "Nice to see you again!",
+    intentJp: "また会えて嬉しいです、と伝えたい。",
+    modelAnswerEn: "Nice to see you too!",
+  },
+  {
+    questionEn: "Did you have any trouble parking?",
+    intentJp: "いいえ、問題なく停められました、と伝えたい。",
+    modelAnswerEn: "No, I parked without any problem.",
+  },
+  {
+    questionEn: "How's your back been since our last session?",
+    intentJp: "前回のセッションからかなり調子が良いです、と伝えたい。",
+    modelAnswerEn: "It's been feeling much better since last time.",
+  },
+  {
+    questionEn: "Would you like to hang your coat over there?",
+    intentJp: "はい、ありがとうございます、と伝えたい。",
+    modelAnswerEn: "Yes, thank you.",
+  },
+  {
+    questionEn: "Is it okay if I open the window a little?",
+    intentJp: "はい、全然大丈夫です、と伝えたい。",
+    modelAnswerEn: "Yes, that's totally fine.",
+  },
+  {
+    questionEn: "Sorry about the noise outside today.",
+    intentJp: "大丈夫です、気になりません、と伝えたい。",
+    modelAnswerEn: "It's fine, it doesn't bother me.",
+  },
+  {
+    questionEn: "Would you prefer to talk before we begin, or after?",
+    intentJp: "始める前に少し話したいです、と伝えたい。",
+    modelAnswerEn: "I'd like to talk a little before we begin.",
+  },
+  {
+    questionEn: "Can I get you anything else before we start?",
+    intentJp: "いいえ、これで十分です、と伝えたい。",
+    modelAnswerEn: "No, this is enough, thank you.",
+  },
+  {
+    questionEn: "Did the exercises from last time help?",
+    intentJp: "はい、とても助かりました、と伝えたい。",
+    modelAnswerEn: "Yes, they helped a lot.",
+  },
+  {
+    questionEn: "Same time again next month?",
+    intentJp: "はい、それで大丈夫です、と伝えたい。",
+    modelAnswerEn: "Yes, that works for me.",
+  },
 ];
 
 // ---- モード3: 語彙 ----
@@ -171,4 +319,19 @@ const VOCAB_ITEMS = [
   { jp: "膝を曲げる", en: "to bend the knee" },
   { jp: "隙間（床との）", en: "a gap (from the floor)" },
   { jp: "軽さ", en: "lightness" },
+  { jp: "足の裏", en: "sole of the foot" },
+  { jp: "かかと", en: "heel" },
+  { jp: "顎", en: "jaw" },
+  { jp: "首を回す", en: "to turn the neck" },
+  { jp: "安定している", en: "stable" },
+  { jp: "空間・すき間ができる", en: "to create space" },
+  { jp: "軽さ（腕など）", en: "lightness (e.g., of the arm)" },
+  { jp: "準備する", en: "to prepare" },
+  { jp: "時計回り", en: "clockwise" },
+  { jp: "反時計回り", en: "counterclockwise" },
+  { jp: "クッション", en: "cushion" },
+  { jp: "マット", en: "mat" },
+  { jp: "体重", en: "body weight" },
+  { jp: "滑らかな動き", en: "smooth movement" },
+  { jp: "緊張", en: "tension" },
 ];
